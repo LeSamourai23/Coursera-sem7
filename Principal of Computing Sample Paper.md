@@ -189,7 +189,6 @@ netfile = urllib2.urlopen(url)
 
 ## Q3 (a). Define the rooted binary tree and describe its components with a neat diagram. Describe its structural properties also.
 ### Ans.
-Basic definition and display
 Formally, a rooted [tree](http://en.wikipedia.org/wiki/Tree_(data_structure)) is a collection of nodes and edges that can be organized recursively as follows. The tree has a _root_ node with an associated value and a list of references to a collection of _subtrees_. The root nodes of these subtrees are the _children_ of the root node for the original tree while the root node is the _parent_of the children. Each node in the tree should have exactly one parent with the exception of the root which has no parent. This last condition ensures that the tree is hierarchical since each subtree of the root is then guaranteed to be disjoint from the other subtrees.
 ![[CJYiqOrnEeWOVQ68c1xy2w_6be08d9fcc9608d3572c1340e2269112_poc_tree_diagram.png]]
 Certainly! Let's consider a simple binary tree to illustrate these concepts. 
