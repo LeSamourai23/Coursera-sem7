@@ -535,7 +535,6 @@ In summary, the Master Theorem confirms that the time complexity of Merge Sort i
 ### Binary Search:
 
 **Algorithm:**
-
 Binary Search is an efficient algorithm for finding a specific value in a sorted array.
 
 ```plaintext
@@ -568,7 +567,6 @@ binary_search(arr, target):
 ### Linear Search:
 
 **Algorithm:**
-
 Linear Search is a simple algorithm that sequentially checks each element in a list until a match is found.
 
 ```plaintext
@@ -591,8 +589,7 @@ linear_search(arr, target):
 - O(1) (constant space, as only a few variables are used)
 
 ### Comparison:
-
-- **Binary Search:**
+* **Binary Search:**
   - Requires a sorted array.
   - Efficient for large datasets.
   - Divide-and-conquer approach.
@@ -603,3 +600,127 @@ linear_search(arr, target):
   - Sequential approach.
 
 In summary, Binary Search is more efficient for searching in sorted arrays, with a time complexity of O(log n), while Linear Search is suitable for smaller datasets or unsorted arrays, with a time complexity of O(n). The choice depends on the nature of the data and the search requirements.
+
+# Week 4
+## 1. RNA Secondary Structure Problem
+The RNA Secondary Structure Problem is a computational biology problem that involves predicting the secondary structure of a given RNA (ribonucleic acid) sequence. The secondary structure refers to the spatial arrangement of base pairs within the RNA molecule, including the formation of helices, loops, and other structures.
+
+RNA is composed of nucleotides, and the four types of RNA nucleotides are adenine (A), cytosine (C), guanine (G), and uracil (U). The secondary structure is determined by the complementary base pairing between adenine and uracil (A-U) and between guanine and cytosine (G-C).
+
+### Problem Statement:
+Given an RNA sequence, the RNA Secondary Structure Problem involves predicting how the nucleotides will pair with each other to form stable secondary structures. The goal is to identify the base pairs and the resulting helices and loops in the secondary structure.
+
+### Imagine a String of Letters:
+Think of a long string made up of only four letters: A, U, G, and C. Each letter represents a building block in a special molecule called RNA.
+
+### Base Pairing Rules:
+Now, there are some rules for how these letters can stick together:
+
+- A pairs with U.
+- G pairs with C.
+
+So, if you have the sequence AU, it means that A and U are stuck together. Similarly, GC means G and C are paired up.
+
+### Building Structures:
+RNA molecules can fold and form structures like helices (twists) and loops. The challenge is to figure out how these letters pair up to create the most stable structure, following the pairing rules.
+
+### Computational Problem:
+The RNA Secondary Structure Problem in computational biology is about using computer algorithms to predict how these letters in the RNA sequence will pair up to form the most stable and meaningful structures.
+
+### Dynamic Programming:
+Dynamic programming algorithms, such as the Nussinov algorithm and the Zuker algorithm, are commonly used for predicting RNA secondary structures. These algorithms aim to find the optimal pairing of nucleotides by considering the stability of the secondary structure.
+
+## 2. Closest Pair Problem
+
+The Closest Pair Problem is a computational problem that involves finding the two points in a set of points in a two-dimensional space that are closest to each other. The "closeness" is typically measured as the Euclidean distance between points.
+
+### Problem Statement:
+
+Given a set of points \( P \) in a 2D plane, the goal is to find the pair of points \( (p_i, p_j) \) where \( p_i \) and \( p_j \) are distinct points in \( P \), and the Euclidean distance between them is minimized.
+
+### Brute Force Approach:
+
+One straightforward approach is to compute the distance between every pair of points and find the minimum distance. However, this has a time complexity of \( O(n^2) \), where \( n \) is the number of points, making it inefficient for large datasets.
+
+### Efficient Divide and Conquer Approach:
+
+The Divide and Conquer approach provides a more efficient solution with a time complexity of \( O(n \log n) \).
+
+**Algorithm: Closest Pair (Divide and Conquer)**
+
+**Imagine a Maze:**
+Think of a big maze filled with many twists and turns. Your goal is to find the two people in the maze who are closest to each other.
+
+**Divide:**
+Instead of trying to find the closest pair directly in the entire maze, you decide to make the problem simpler. You divide the maze into smaller sections. Each section is like a mini-maze.
+
+**Conquer:**
+Now, you focus on each mini-maze separately. You apply the same strategy to each mini-maze: find the two closest people within that smaller space. It's easier to handle a small maze than the entire big maze.
+
+**Combine:**
+After finding the closest pairs in each mini-maze, you look at the borders between these mini-mazes. Why? Because the closest pair might involve one person from one mini-maze and another from a neighboring mini-maze.
+
+This Divide and Conquer algorithm recursively divides the set of points, solves the closest pair problem in each half, and then merges the solutions efficiently. The middle strip ensures that pairs with one point on each side of the division line are considered.
+
+## Data Clustering
+
+### K-Means Clustering:
+
+**Note:**
+K-Means is a partitioning-based clustering algorithm that groups data points into K clusters. It aims to minimize the sum of squared distances between data points and the centroid of their assigned cluster.
+
+**Algorithm Steps:**
+1. Randomly initialize K centroids (representative points for clusters).
+2. Assign each data point to the nearest centroid, forming K clusters.
+3. Recalculate the centroids as the mean of data points in each cluster.
+4. Repeat steps 2-3 until convergence or a predetermined number of iterations.
+
+**Example:**
+Consider customer data for online shopping. K-Means clustering could be used to group customers based on their purchase behavior, such as frequency, recency, and monetary value. This helps identify customer segments for targeted marketing.
+
+### Hierarchical Clustering:
+
+**Note:**
+Hierarchical Clustering builds a tree-like hierarchy of clusters, either from the bottom-up (agglomerative) or top-down (divisive). It captures relationships between data points at different levels of granularity.
+
+**Algorithm Steps (Agglomerative):**
+1. Treat each data point as a single cluster.
+2. Merge the closest clusters iteratively until only one cluster remains.
+3. Build a dendrogram (tree structure) to represent the merging process.
+
+**Example:**
+In biology, hierarchical clustering can be applied to gene expression data. The algorithm helps identify groups of genes with similar expression patterns, allowing researchers to explore relationships and potential functional connections.
+
+### Examples of Applications:
+
+1. **K-Means:**
+   - **E-commerce:** Segmenting customers for personalized marketing.
+   - **Image Compression:** Reducing image size while preserving essential features.
+
+2. **Hierarchical Clustering:**
+   - **Biology:** Understanding genetic relationships and evolutionary trees.
+   - **Market Research:** Grouping products or services based on similarity for strategic planning.
+
+### Considerations:
+
+1. **K-Means:**
+   - Sensitive to initial centroids (may converge to local minima).
+   - Assumes spherical clusters of similar sizes.
+
+2. **Hierarchical Clustering:**
+   - No need to specify the number of clusters beforehand.
+   - Dendrogram visualization helps in understanding hierarchy.
+
+In practice, the choice between these algorithms depends on the nature of the data and the goals of the analysis. K-Means is suitable for well-defined, compact clusters, while hierarchical clustering is versatile and captures hierarchical relationships within the data.
+
+## 5. Dynamic Programming
+To set about developing an algorithm based on dynamic programming, one needs a collection of subproblems derived from the original problem that satisfies a few basic properties:!
+* The solution to the original problem can be easily computed from the
+	solutions to the subproblems (for example, the original problem may
+	actually be one of the subproblems).!
+* There is a natural ordering on subproblems from “smallest” to “largest,”
+	together with an easy-to-compute recurrence that allows one to determine the solution to a subproblem from the solutions to some number of smaller subproblems.
+
+![DP](https://i.ibb.co/LtBwW1k/image.png[/img)
+
+**[READ THIS!](https://storage.googleapis.com/codeskulptor-alg/pdf/DynamicProgramming.pdf)**
