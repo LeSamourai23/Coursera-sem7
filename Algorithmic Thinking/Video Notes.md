@@ -190,8 +190,7 @@ whereas the input size is given by the number of nodes and
 number of edges if the graph is represented by an adjacency list.
 
 ## 6. Brute Force distance between graphs
-![[Pasted image 20231201132226.png]]
-
+[![Jz23b7s.md.png](https://iili.io/Jz23b7s.md.png)](https://freeimage.host/i/Jz23b7s)
 ## 7. Degree Distribution of Graphs
 Degree distribution in a graph refers to the distribution of degrees (number of edges incident to a node) across all nodes. There are three types of degree distribution: in-degree, out-degree, and in-out degree distribution.
 
