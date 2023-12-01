@@ -278,11 +278,11 @@ Asymptotic notations, such as Big O, Big Omega, and Big Theta, are mathematical 
 
 Asymptotic notations are crucial for comparing and analyzing algorithms independently of machine-specific details. They simplify discussions about efficiency, aiding in algorithm selection and design based on the expected input size and performance requirements. For example, an algorithm with O(n^2) time complexity is less efficient than one with O(n log n) when handling large datasets.
 
-**Theorem**: If T1(n)=O(f1(n)) and T2(n)=O(f2(n)) then T1(n)+T2(n)=O(max{f1(n),f2(n)}).
+**Theorem**: If $T1(n)=O(f1(n))$ and $T2(n)=O(f2(n))$ then $T1(n)+T2(n)=O(max{f1(n),f2(n)})$.
  Examples:
-* n + n^2 = O(n^2)
-* log n + n = O(n)
-* 1 + n + n^2 + 106*n^3 + 2*n^4 = O(n4)
+* $n + n^2 = O(n^2)$
+* $log n + n = O(n)$
+* $1 + n + n^2 + 106*n^3 + 2*n^4 = O(n^4)$
 
 ## 3. Breadth First Search and Graph Exploration
 Graph exploration can be done:
@@ -380,26 +380,24 @@ BFS is efficient for exploring and traversing graphs, especially when the goal i
 	✤ What mathematical criterion corresponds to the desired output?
 
 3.  **Designing an Algorithm:**
-	✤ Is the formulated problem amenable to a certain algorithm design technique (greedy, divide-and-conquer, etc.)?
-	✤ What data structures make sense to use?
-	✤ Is the algorithm correct?
-	✤ Is the algorithm efficient?
-	✤ If the problem is “too hard,” do we want an approximation algorithm, a randomized algorithm, a heuristic, ...?
+	* Is the formulated problem amenable to a certain algorithm design technique (greedy, divide-and-conquer, etc.)?
+	* What data structures make sense to use?
+	* Is the algorithm correct?
+	* Is the algorithm efficient?
+	* If the problem is “too hard,” do we want an approximation algorithm, a randomized algorithm, a heuristic, ...?
 
 4. **Implementing the Algorithm:**
-	✤ Most algorithms are destined to be ultimately implemented as computer programs.
-	✤ Programming an algorithm presents both a peril and an opportunity.
-	✤ The peril lies in the possibility of making the transition from an algorithm to a program either incorrectly or very inefficiently.
-	✤ Special mathematical techniques have been developed for proving program correctness, but the power of these techniques is still limited to very small programs.
-	✤ As a practical matter, the validity of programs is still established by testing.
-	✤ Program correctness is necessary but not sufficient: You would not want to diminish your algorithm’s power by an inefficient implementation.
-	✤ The opportunity lies in the possibility to better understand the algorithm and even to improve it.
+	* Most algorithms are destined to be ultimately implemented as computer programs.
+	*  Programming an algorithm presents both a peril and an opportunity.
+	* The peril lies in the possibility of making the transition from an algorithm to a program either incorrectly or very inefficiently.
+	* Special mathematical techniques have been developed for proving program correctness, but the power of these techniques is still limited to very small programs.
+	* As a practical matter, the validity of programs is still established by testing.
+	* Program correctness is necessary but not sufficient: You would not want to diminish your algorithm’s power by an inefficient implementation.
+	* The opportunity lies in the possibility to better understand the algorithm and even to improve it.
 
 5. **Solving the Original Problem:**
-	✤ Once the algorithm is implemented, it is run on data to solve the original problem.
-	✤ Sometimes, it is discovered after this entire process is followed, that
-	the solution is not satisfactory. This might require going back to step
-	(1) and repeating the entire process.
+	* Once the algorithm is implemented, it is run on data to solve the original problem.
+	* Sometimes, it is discovered after this entire process is followed, that the solution is not satisfactory. This might require going back to step (1) and repeating the entire process.
 
 ## 2. Merge Sort
 Merge Sort is a divide-and-conquer sorting algorithm that divides the input array into two halves, recursively sorts each half, and then merges the sorted halves to produce a sorted array. It is known for its stability and guaranteed time complexity of O(n log n).
@@ -640,11 +638,11 @@ Given a set of points \( P \) in a 2D plane, the goal is to find the pair of poi
 
 ### Brute Force Approach:
 
-One straightforward approach is to compute the distance between every pair of points and find the minimum distance. However, this has a time complexity of \( O(n^2) \), where \( n \) is the number of points, making it inefficient for large datasets.
+One straightforward approach is to compute the distance between every pair of points and find the minimum distance. However, this has a time complexity of $( O(n^2) )$, where \( n \) is the number of points, making it inefficient for large datasets.
 
 ### Efficient Divide and Conquer Approach:
 
-The Divide and Conquer approach provides a more efficient solution with a time complexity of \( O(n \log n) \).
+The Divide and Conquer approach provides a more efficient solution with a time complexity of $( O(n \log n))$.
 
 **Algorithm: Closest Pair (Divide and Conquer)**
 
