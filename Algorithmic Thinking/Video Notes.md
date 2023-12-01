@@ -370,14 +370,14 @@ BFS is efficient for exploring and traversing graphs, especially when the goal i
 # Week 3
 ## Algorithmic Thinking
 1. **Understanding the problem:**
-	✤ Understand the description of the problem.
-	✤ What are the input/output?
-	✤ Do a few examples by hand.
-	✤ Think about special cases.
+	* Understand the description of the problem.
+	* What are the input/output?
+	* Do a few examples by hand.
+	* Think about special cases.
 
 2.  **Formulating the Problem:**
-	✤ Think about the data and the best way to represent them (graphs, strings, etc.)
-	✤ What mathematical criterion corresponds to the desired output?
+	* Think about the data and the best way to represent them (graphs, strings, etc.)
+	* What mathematical criterion corresponds to the desired output?
 
 3.  **Designing an Algorithm:**
 	* Is the formulated problem amenable to a certain algorithm design technique (greedy, divide-and-conquer, etc.)?
@@ -663,8 +663,6 @@ This Divide and Conquer algorithm recursively divides the set of points, solves 
 ## Data Clustering
 
 ### K-Means Clustering:
-
-**Note:**
 K-Means is a partitioning-based clustering algorithm that groups data points into K clusters. It aims to minimize the sum of squared distances between data points and the centroid of their assigned cluster.
 
 **Algorithm Steps:**
@@ -677,8 +675,6 @@ K-Means is a partitioning-based clustering algorithm that groups data points int
 Consider customer data for online shopping. K-Means clustering could be used to group customers based on their purchase behavior, such as frequency, recency, and monetary value. This helps identify customer segments for targeted marketing.
 
 ### Hierarchical Clustering:
-
-**Note:**
 Hierarchical Clustering builds a tree-like hierarchy of clusters, either from the bottom-up (agglomerative) or top-down (divisive). It captures relationships between data points at different levels of granularity.
 
 **Algorithm Steps (Agglomerative):**
@@ -712,12 +708,9 @@ In biology, hierarchical clustering can be applied to gene expression data. The 
 In practice, the choice between these algorithms depends on the nature of the data and the goals of the analysis. K-Means is suitable for well-defined, compact clusters, while hierarchical clustering is versatile and captures hierarchical relationships within the data.
 
 ## 5. Dynamic Programming
-To set about developing an algorithm based on dynamic programming, one needs a collection of subproblems derived from the original problem that satisfies a few basic properties:!
-* The solution to the original problem can be easily computed from the
-	solutions to the subproblems (for example, the original problem may
-	actually be one of the subproblems).!
-* There is a natural ordering on subproblems from “smallest” to “largest,”
-	together with an easy-to-compute recurrence that allows one to determine the solution to a subproblem from the solutions to some number of smaller subproblems.
+To set about developing an algorithm based on dynamic programming, one needs a collection of subproblems derived from the original problem that satisfies a few basic properties:
+* The solution to the original problem can be easily computed from the solutions to the subproblems (for example, the original problem may actually be one of the subproblems).!
+* There is a natural ordering on subproblems from “smallest” to “largest,” together with an easy-to-compute recurrence that allows one to determine the solution to a subproblem from the solutions to some number of smaller subproblems.
 
 ![DP](https://i.ibb.co/LtBwW1k/image.png[/img)
 
