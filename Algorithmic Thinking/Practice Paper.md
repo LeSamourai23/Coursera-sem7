@@ -179,3 +179,130 @@ Procedure:
 ```
 
 This pseudo-code describes an algorithm to find the maximum number in a list. It outlines the steps without using the syntax of a specific programming language, making it easy for anyone familiar with programming concepts to understand.
+
+# Q4 (a). A famous problem is figuring out whether an undirected graph contains an Eulerian path. Such a path contains all of the edges in the graph exactly once, but may pass through any of the vertices in the graph as many times as desired. This problem can be formulated as the Eulerian path problem by treating each of the bridges as an undirected edge in a graph, and the parts of the city as the vertices. Here is the crucial fact: A graph contains an Eulerian path if 1. It consists of just one connected component (meaning that all vertices can be reached from any other vertex), and 2. It contains no more than two vertices of odd degree. Write an algorithm to find whether Eulerian Path exist in given graph or not. If yes algorithm should return true else false.
+**Ans.**
+```plaintext
+Algorithm: HasEulerianPathBFS
+
+function has_eulerian_path(graph):
+    // Check condition 1: One connected component using BFS
+    if not isConnectedBFS(graph):
+        return false
+    
+    oddDegreeCount = 0
+
+    // Check condition 2: No more than two vertices of odd degree
+    for vertex in graph.vertices:
+        if degree(vertex) % 2 != 0:
+            oddDegreeCount += 1
+
+    return oddDegreeCount == 0 or oddDegreeCount == 2
+
+function isConnectedBFS(graph):
+    startVertex = getAnyVertex(graph)
+    visited = set()
+    queue = [startVertex]
+
+    while queue:
+        currentVertex = queue.pop(0)
+        visited.add(currentVertex)
+
+        for neighbor in graph.neighbors(currentVertex):
+            if neighbor not in visited and neighbor not in queue:
+                queue.append(neighbor)
+
+    return len(visited) == len(graph.vertices)
+
+// The rest of the functions (degree, getAnyVertex) remain the same.
+```
+
+In this version, the `isConnectedBFS` function uses BFS to traverse the graph and determine if it is a single connected component. The rest of the algorithm remains the same, checking the conditions for the existence of an Eulerian Path.
+
+# Q4 (b). Explain the adjacency list representation of an unweighted graph. Write the adjacency list for the following graph: ![Question](https://i.ibb.co/qgTDPW3/image.png)
+**Ans.**
+The adjacency list representation is a common way to represent an unweighted graph. In this representation, each vertex of the graph is associated with a list that contains its neighboring vertices. For an undirected graph, each edge is represented twice (once for each adjacent vertex). 
+
+0 -> [1, 4]
+1 -> [0, 2, 3, 4]
+2 -> [1, 3]
+3 -> [1, 2, 4]
+4 -> [0, 1, 3]
+
+# Q4 (c). Write two pros and cons for adjacency matrix method of graph representation. 
+**Ans.**
+**Pros:**
+
+1. **Efficient for Dense Graphs:**
+    
+    - In graphs with many edges (dense graphs), an adjacency matrix is often more space-efficient than an adjacency list. It allows constant-time access to check the existence of an edge.
+    
+2. **Ease of Edge Weight Representation:**
+    
+    - If the graph is weighted, an adjacency matrix simplifies the representation of edge weights. Each entry in the matrix can store the weight of the corresponding edge, making it straightforward to access and update weights.
+
+**Cons:**
+
+1. **Space Inefficiency for Sparse Graphs:**
+    
+    - In sparse graphs (graphs with few edges), an adjacency matrix can be inefficient in terms of space utilization. It stores information about all possible edges, leading to unnecessary memory consumption and increased computational complexity.
+    
+2. **Costly for Dynamic Graphs:**
+    
+    - If the graph structure changes frequently (edges are added or removed), resizing the matrix to accommodate these changes can be computationally expensive. This is especially true for dynamic graphs where the number of edges is not constant.
+
+# Q5 (a). What is the use of asymptotic notations? Explain the meaning and significance of big O (O) and omega ($\Omega$) notations. Give an example for each. 
+**Ans.**
+Asymptotic notations, such as Big O, Big Omega, and Big Theta, are mathematical tools used to describe the efficiency or complexity of algorithms in computer science. They provide a concise way to express the growth rate of algorithms as input sizes approach infinity.
+
+1. **Big O Notation (O):**
+   - Represents the upper bound or worst-case scenario of an algorithm's time complexity. It describes how an algorithm's execution time grows in relation to the input size but does not provide information about the actual performance.
+
+2. **Big Omega Notation (Ω):**
+   - Represents the lower bound or best-case scenario of an algorithm's time complexity. It describes the minimum growth rate of an algorithm, indicating that the algorithm will not perform better than this under any circumstances.
+
+Consider the Bubble Sort algorithm, which has a time complexity of $O(n^2)$ in the worst case. The Big O notation $O(n^2)$ indicates that the running time of Bubble Sort grows quadratically with the size of the input.
+
+Consider the Merge Sort algorithm, which has a time complexity of $Ω(nlog⁡(n))$ in the best case. The Big Omega notation $Ω(nlog(n))$ indicates that the running time of Merge Sort grows at least as fast as $nlog(n)$ with the size of the input.
+
+# Q5 (b). What do you mean by time complexity of an algorithm? What are its two components? Explain.
+**Ans.**
+**Time complexity** of an algorithm is a measure of the amount of time it takes for an algorithm to run as a function of the length of the input. It provides an estimate of the upper bound on the running time of an algorithm.
+
+**Two Components of Time Complexity:**
+
+1. **Constant Factors (Coefficient):**
+    
+    - These are the factors that represent the actual computational work being done by the algorithm. They include the number of basic operations (arithmetic operations, assignments, comparisons, etc.) performed by the algorithm.
+        
+    - Example: In an algorithm that iterates through an array of size nn, the number of comparisons or assignments within the loop contributes to the constant factors.
+        
+2. **Dominant Term (Order of Growth):**
+    
+    - The dominant term in the time complexity expression determines the overall growth rate of the running time as the input size (nn) increases. It focuses on the most significant factor that influences the running time for large inputs.
+        
+    - Example: In O(n2+3n+1)O(n2+3n+1), the dominant term is n2n2, indicating a quadratic growth rate.
+
+# Q5 (c). What do you mean by a strongly connected graph? Explain with an example. 
+**Ans.**
+A **strongly connected graph** is a directed graph in which there exists a directed path from any vertex to any other vertex. In other words, every pair of vertices in a strongly connected graph is mutually reachable.
+
+**Example:**
+
+Consider the following directed graph:
+
+```
+1 → 2
+↑ ↘ ↓
+4 ← 3
+```
+
+In this graph:
+- There is a directed path from 1 to 2 (1 → 2).
+- There is a directed path from 2 to 3 (2 → 3).
+- There is a directed path from 3 to 4 (3 → 4).
+- There is a directed path from 4 to 1 (4 → 1).
+
+Therefore, every vertex in this graph is reachable from every other vertex through directed paths. Hence, this directed graph is strongly connected.
+
+If, in a directed graph, there exists a directed path from every vertex to every other vertex, and vice versa, the graph is considered strongly connected. Strong connectivity is an important property in various applications, including network analysis, communication systems, and optimization problems.
