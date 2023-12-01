@@ -367,4 +367,239 @@ This pseudo-code outlines the basic steps of BFS. It uses a queue to keep track 
 
 BFS is efficient for exploring and traversing graphs, especially when the goal is to visit all vertices reachable from the source in a systematic order. Its time and space complexity make it suitable for applications such as shortest path finding in unweighted graphs and exploring connected components.
 
+# Week 3
+## Algorithmic Thinking
+1. **Understanding the problem:**
+	✤ Understand the description of the problem.
+	✤ What are the input/output?
+	✤ Do a few examples by hand.
+	✤ Think about special cases.
 
+2.  **Formulating the Problem:**
+	✤ Think about the data and the best way to represent them (graphs, strings, etc.)
+	✤ What mathematical criterion corresponds to the desired output?
+
+3.  **Designing an Algorithm:**
+	✤ Is the formulated problem amenable to a certain algorithm design technique (greedy, divide-and-conquer, etc.)?
+	✤ What data structures make sense to use?
+	✤ Is the algorithm correct?
+	✤ Is the algorithm efficient?
+	✤ If the problem is “too hard,” do we want an approximation algorithm, a randomized algorithm, a heuristic, ...?
+
+4. **Implementing the Algorithm:**
+	✤ Most algorithms are destined to be ultimately implemented as computer programs.
+	✤ Programming an algorithm presents both a peril and an opportunity.
+	✤ The peril lies in the possibility of making the transition from an algorithm to a program either incorrectly or very inefficiently.
+	✤ Special mathematical techniques have been developed for proving program correctness, but the power of these techniques is still limited to very small programs.
+	✤ As a practical matter, the validity of programs is still established by testing.
+	✤ Program correctness is necessary but not sufficient: You would not want to diminish your algorithm’s power by an inefficient implementation.
+	✤ The opportunity lies in the possibility to better understand the algorithm and even to improve it.
+
+5. **Solving the Original Problem:**
+	✤ Once the algorithm is implemented, it is run on data to solve the original problem.
+	✤ Sometimes, it is discovered after this entire process is followed, that
+	the solution is not satisfactory. This might require going back to step
+	(1) and repeating the entire process.
+
+## 2. Merge Sort
+Merge Sort is a divide-and-conquer sorting algorithm that divides the input array into two halves, recursively sorts each half, and then merges the sorted halves to produce a sorted array. It is known for its stability and guaranteed time complexity of O(n log n).
+
+### Merge Sort Pseudocode:
+
+```plaintext
+Algorithm: Merge Sort
+
+merge_sort(arr):
+    if length of arr <= 1:
+        return arr  // Already sorted
+    
+    // Divide the array into two halves
+    middle = length of arr / 2
+    left_half = merge_sort(arr[0 to middle-1])
+    right_half = merge_sort(arr[middle to end])
+    
+    // Merge the sorted halves
+    merged_array = merge(left_half, right_half)
+    return merged_array
+
+merge(left, right):
+    merged = []
+    left_index = 0
+    right_index = 0
+    
+    // Compare elements from left and right arrays
+    while left_index < length of left and right_index < length of right:
+        if left[left_index] <= right[right_index]:
+            append left[left_index] to merged
+            left_index++
+        else:
+            append right[right_index] to merged
+            right_index++
+    
+    // Add remaining elements (if any) from left and right arrays
+    append remaining elements from left[left_index to end] to merged
+    append remaining elements from right[right_index to end] to merged
+    
+    return merged
+```
+
+### Explanation:
+
+1. The `merge_sort` function recursively divides the input array into two halves until the base case is reached (when the array has one or zero elements).
+
+2. The `merge` function takes two sorted arrays (`left` and `right`) and merges them into a single sorted array. It compares elements from both arrays and appends the smaller element to the `merged` array.
+
+3. The merging process continues until one of the arrays is exhausted. Any remaining elements in the non-empty array are appended to the `merged` array.
+
+4. The merged array is then returned.
+
+### Example:
+
+Let's consider an example with the array `[38, 27, 43, 3, 9, 82, 10]`.
+
+```plaintext
+merge_sort([38, 27, 43, 3, 9, 82, 10])
+
+// Divide
+merge_sort([38, 27, 43]) + merge_sort([3, 9, 82, 10])
+
+// Divide further
+merge_sort([38]) + merge_sort([27, 43]) + merge_sort([3]) + merge_sort([9, 82, 10])
+
+// Merge
+[38] + merge([27], [43]) + [3] + merge([9], [82, 10])
+
+// Final Merge
+merge([38], merge([27, 43], [3]), merge([9], [10, 82]))
+```
+
+The final merged array will be the sorted version of the input array `[38, 27, 43, 3, 9, 82, 10]`.
+
+## 3. Recurrence of Merge Sort
+The recurrence relation for Merge Sort describes the time complexity of the algorithm in terms of the time complexity of its subproblems. Merge Sort uses a divide-and-conquer approach, dividing the array into two halves, recursively sorting each half, and then merging them. The recurrence relation helps express the time complexity as a function of the size of the input.
+
+### Recurrence Relation for Merge Sort:
+
+Let \( T(n) \) represent the time complexity of Merge Sort on an input array of size \( n \). The recurrence relation is given by:
+
+$[ T(n) = 2T\left(\frac{n}{2}\right) + O(n)]$
+
+- $( T(n) )$: Time taken to sort an array of size \( n \).
+- $( 2T\left(\frac{n}{2}\right) )$: Time taken to sort two subarrays of size \( \frac{n}{2} \) each.
+- $( O(n) )$: Time taken for the merging step, where each element is compared and placed in the correct order.
+
+### Recurrence Tree:
+
+The recurrence relation can be visualized as a recurrence tree, where each level represents a recursive call, and the nodes at each level represent the time complexity of sorting a subarray of a specific size. At each level, the work done is \( O(n) \) for merging.
+
+For example, for an array of size \( n \):
+
+- Level 0: \( n \) (initial array)
+- Level 1: $( \frac{n}{2} + \frac{n}{2} )$ (two subarrays of size $( \frac{n}{2} )$ each)
+- Level 2: $( \frac{n}{4} + \frac{n}{4} + \frac{n}{4} + \frac{n}{4} )$ (four subarrays of size $( \frac{n}{4} )$ each)
+- ...
+
+The total work done is the sum of work at each level, which can be expressed as a geometric series.
+
+### Time Complexity:
+
+The solution to the recurrence relation is \( T(n) = O(n \log n) \), indicating that Merge Sort has a time complexity of \( O(n \log n) \). This makes it an efficient sorting algorithm, particularly for large datasets, as it guarantees a consistent time complexity regardless of the input arrangement.
+
+## 4. Master Theorem and MergeSort Efficiency
+The **Master Theorem** is a mathematical tool for analyzing the time complexity of divide-and-conquer algorithms, particularly those with specific recurrence relations. It provides a method for determining time complexity based on the structure of recursive algorithms.
+
+The recurrence relation for the time complexity of **Merge Sort** is given by:
+
+$[ T(n) = 2T\left(\frac{n}{2}\right) + O(n) ]$
+
+Here:
+- \( a = 2 \) (two recursive calls),
+- \( b = 2 \) (input size is halved in each recursive call),
+- $( f(n) = O(n) )$ (work done for merging).
+
+### Master Theorem Cases:
+
+1. **Case 1:** If $( f(n) )$ is $( O(n^c) )$, where $( c < \log_b a )$, then the time complexity is $( \Theta(n^{\log_b a}) )$.
+
+2. **Case 2:** If $( f(n) )$ is $( \Theta(n^{\log_b a} \log^k n) )$, where $( k \geq 0 )$, then the time complexity is $( \Theta(n^{\log_b a} \log^{k+1} n) )$.
+
+3. **Case 3:** If $( f(n) )$ is $( \Omega(n^c) )$, where $( c > \log_b a )$, and $( af\left(\frac{n}{b}\right) \leq kf(n) )$ for some $( k < 1 )$ and sufficiently large $( n )$, then the time complexity is $( \Theta(f(n)) )$.
+
+### Merge Sort Analysis:
+
+In the case of Merge Sort, $( a = 2 )$, $( b = 2 )$, and $( f(n) = O(n) )$. The recurrence relation falls into **Case 1** because $( \log_b a = \log_2 2 = 1 )$, and $( c = 0 )$. Thus, the time complexity of Merge Sort is $( \Theta(n^{\log_b a}) = \Theta(n^1) = \Theta(n) )$.
+
+In summary, the Master Theorem confirms that the time complexity of Merge Sort is $( \Theta(n \log n) )$, making it an efficient algorithm for sorting large datasets.
+
+## 5. Linear and Binary Search
+### Binary Search:
+
+**Algorithm:**
+
+Binary Search is an efficient algorithm for finding a specific value in a sorted array.
+
+```plaintext
+Algorithm: Binary Search
+
+binary_search(arr, target):
+    low = 0
+    high = length of arr - 1
+    
+    while low <= high:
+        mid = (low + high) / 2
+        if arr[mid] == target:
+            return mid  // Target found
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return -1  // Target not found
+```
+
+**Time Complexity:**
+- Best Case: O(1) (when the target is found in the middle on the first try)
+- Worst Case: O(log n) (when repeatedly dividing the array in half)
+- Average Case: O(log n)
+
+**Space Complexity:**
+- O(1) (constant space, as only a few variables are used)
+
+### Linear Search:
+
+**Algorithm:**
+
+Linear Search is a simple algorithm that sequentially checks each element in a list until a match is found.
+
+```plaintext
+Algorithm: Linear Search
+
+linear_search(arr, target):
+    for i from 0 to length of arr - 1:
+        if arr[i] == target:
+            return i  // Target found
+    
+    return -1  // Target not found
+```
+
+**Time Complexity:**
+- Best Case: O(1) (when the target is the first element)
+- Worst Case: O(n) (when the target is at the end or not present)
+- Average Case: O(n)
+
+**Space Complexity:**
+- O(1) (constant space, as only a few variables are used)
+
+### Comparison:
+
+- **Binary Search:**
+  - Requires a sorted array.
+  - Efficient for large datasets.
+  - Divide-and-conquer approach.
+
+- **Linear Search:**
+  - Works on both sorted and unsorted arrays.
+  - Simple and straightforward.
+  - Sequential approach.
+
+In summary, Binary Search is more efficient for searching in sorted arrays, with a time complexity of O(log n), while Linear Search is suitable for smaller datasets or unsorted arrays, with a time complexity of O(n). The choice depends on the nature of the data and the search requirements.
